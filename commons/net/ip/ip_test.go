@@ -117,3 +117,9 @@ func TestStringToHexString_IPv6(t *testing.T) {
 	assert.Equal(t, "fe80000000000000859fb56e6625859d", StringToHexString("fe80::859f:b56e:6625:859d"))
 	assert.Equal(t, "2001063809020001020102fffee27596", StringToHexString("2001:638:902:1:201:2ff:fee2:7596"))
 }
+
+func TestHexStringToString_IPv4(t *testing.T) {
+	assert.Equal(t, commons.Blank, HexStringToString("1234"))
+
+	assert.Equal(t, "81.131.67.131", HexStringToString("51834383"))
+}

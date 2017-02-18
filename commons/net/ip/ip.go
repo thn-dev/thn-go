@@ -49,7 +49,24 @@ func StringToByteArray(strValue string) []byte {
 	return []byte(commons.Blank)
 }
 
-// StringToHexString - converts a human-readable IP string to a hex representation string
+// StringToHexString - converts a human-readable IP string to a hex
+// representation string
 func StringToHexString(strValue string) string {
 	return ByteArrayToHexString(StringToByteArray(strValue))
+}
+
+// HexStringToByteArray - converts a hex representation string to a byte
+// array
+func HexStringToByteArray(strValue string) []byte {
+	if decodedValue, err := hex.DecodeString(strValue); err == nil {
+		return decodedValue
+	}
+
+	return []byte(commons.Blank)
+}
+
+// HexStringToString - converts a hex representation string to a
+// human-readable IP string
+func HexStringToString(strValue string) string {
+	return ByteArrayToString(HexStringToByteArray(strValue))
 }
